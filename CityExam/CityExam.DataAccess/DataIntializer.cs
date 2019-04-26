@@ -11,8 +11,7 @@ namespace CityExam.DataAccess
     public class DataIntializer : DropCreateDatabaseIfModelChanges<DataContext>
     {
         private List<Country> countries;
-        private List<City> cities;
-        private List<Street> streets;
+
 
         protected override void Seed(DataContext context)
         {
@@ -20,44 +19,46 @@ namespace CityExam.DataAccess
             {
                 new Country
                 {
-                    Name="Russia"
+                    Name="Russia",
+                    Cities= new List<City>
+                    {
+                        new City
+                        {
+                            Name = "Moscow",
+                            Streets = new List<Street>
+                            {
+                                new Street
+                                {
+                                    Name = "Pavaletskaya"
+                                }
+                            }
+                        }
+                    }
                 },
 
                 new Country
                 {
-                    Name="Kazakhstan"
+                    Name="Kazakhstan",
+                    Cities= new List<City>
+                    {
+                        new City
+                        {
+                            Name = "Almaty",
+                            Streets = new List<Street>
+                            {
+                                new Street
+                                {
+                                    Name = "Al-Farabi"
+                                }
+                            }
+                        }
+                    }
                 }
             };
 
-            cities = new List<City>
-            {
-                new City
-                {
-                    Name="Moscow"
-                },
 
-                new City
-                {
-                    Name="Almaty"
-                }
-            };
-
-            streets = new List<Street>
-            {
-                new Street
-                {
-                    Name="Paveletskaya"
-                },
-
-                new Street
-                {
-                    Name="Al-Farabi"
-                }
-            };
 
             context.Countries.AddRange(countries);
-            context.Cities.AddRange(cities);
-            context.Streets.AddRange(streets);
             base.Seed(context);
         }
     }

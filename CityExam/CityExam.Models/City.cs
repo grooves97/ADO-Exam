@@ -8,9 +8,7 @@ namespace CityExam.Models
 {
     public class City : Entity
     {
-        public string Name { get; set; }
-        public Guid CountryId { get; set; }
-        public virtual Country Country { get; set; }
+        public string Name { get; set; }       
 
         public virtual ICollection<Street> Streets { get; set; }
     }
