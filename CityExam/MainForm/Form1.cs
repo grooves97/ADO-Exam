@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CityExam.DataAccess;
+using CityExam.Models;
 
 namespace MainForm
 {
@@ -15,6 +17,36 @@ namespace MainForm
         public Form1()
         {
             InitializeComponent();
+
+            using (var context = new DataContext())
+            {
+                foreach (var country in context.Countries.ToList())
+                {
+                    comboBoxCountry.Items.Add(country.Name);
+                }
+
+                foreach (var city in context.Cities.ToList())
+                {
+                    comboBoxCity.Items.Add(city.Name);
+                }
+
+                foreach (var street in context.Streets.ToList())
+                {
+                    comboBoxStreet.Items.Add(street.Name);
+                }
+            }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            string countryName;
+            string cityName;
+            string streetName;
+        }
+
+        private void LoadTable()
+        {
+
         }
     }
 }
